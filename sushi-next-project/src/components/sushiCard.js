@@ -7,7 +7,7 @@ function SushiCard(props) {
   const imageUrl = item.image
   return (
     <Card className="h-100">
-      <Card.Img variant="top" src={imageUrl} width="300px" height="200" />
+      <Card.Img variant="top" src={imageUrl} width="300px" height="280" />
       <Card.Body>
         <Card.Title>{item.title}</Card.Title>
         <Card.Text>{item.description}</Card.Text>

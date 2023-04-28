@@ -8,7 +8,7 @@ function SushiList(props) {
   const { list = [] } = props
   return (
     <Container>
-      <Row xs={1} md={2} lg={3} className="g-3">
+      <Row xs={1} md={2} lg={3} className="g-5">
         {list.map((item) => (
           <Col key={item.id}>
             <SushiCard item={item} />
