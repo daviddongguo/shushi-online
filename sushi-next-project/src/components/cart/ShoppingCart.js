@@ -16,6 +16,7 @@ export function ShoppingCart(props) {
       onHide={closeCart}
       placement="end"
       backdrop="static"
+      scroll="true"
     >
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Cart</Offcanvas.Title>

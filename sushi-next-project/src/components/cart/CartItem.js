@@ -12,39 +12,28 @@ export function CartItem(props) {
     useContext(CartContext)
 
   return (
-    <Stack direction="horizontal" gap={3}>
+    <Stack direction="horizontal" gap={2}>
       <Image src={sushi.image} alt="" width="100px" />
       <div className="me-auto">
-        <div>
-          {sushi.title}{' '}
-          {quantity > 1 && (
-            <span className="text-muted" style={{ fontSize: '.65rem' }}>
-              x{quantity}
-            </span>
-          )}
-        </div>
-        <div className="text-muted" style={{ fontSize: '.75rem' }}>
-          {formatCurrency(sushi.price)}
-        </div>
+        <div>{sushi.title.slice(0, 6)}..</div>
+        <div>$ {sushi.price / 100}</div>
       </div>
-      <div> {formatCurrency(sushi.price * quantity)}</div>
-      <Button
-        variant="outline-danger"
-        size="sm"
-        onClick={() => increaseCartQuantity(sushi)}
-      >
-        {' '}
-        +
-      </Button>
-      <div>{quantity}</div>
       <Button
         variant="outline-danger"
         size="sm"
         onClick={() => decreaseCartQuantity(sushi)}
       >
-        {' '}
         -
       </Button>
+      <div>{quantity}</div>
+      <Button
+        variant="outline-danger"
+        size="sm"
+        onClick={() => increaseCartQuantity(sushi)}
+      >
+        +
+      </Button>
+      <div> {(sushi.price * quantity) / 100}</div>
       <Button
         variant="outline-danger"
         size="sm"
