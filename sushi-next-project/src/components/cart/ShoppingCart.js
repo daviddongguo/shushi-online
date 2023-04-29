@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Offcanvas, Stack } from 'react-bootstrap'
-import { useShoppingCart } from '../../context/CartContext'
 import { formatCurrency } from '../../utilities/formatCurrency'
 import { CartItem } from './CartItem'
 import PropTypes from 'prop-types'
 
+import CartContext from '@/context/CartContext'
+
 export function ShoppingCart(props) {
   const { isOpen } = props
-  const { closeCart, cartItems } = useShoppingCart()
+  const { closeCart, cartItems } = useContext(CartContext)
 
   return (
     <Offcanvas show={isOpen} onHide={closeCart} placement="end">
@@ -22,8 +23,8 @@ export function ShoppingCart(props) {
           <div className="ms-auto fw-bold fs-5">
             Total{' '}
             {formatCurrency(
-              cartItems.reduce((total, cartItem) => {
-                return total + (cartItem.item?.price || 0) * cartItem.quantity
+              cartItems.reduce((total, item) => {
+                return total + (item.sushi.price || 0) * item.quantity
               }, 0)
             )}
           </div>
