@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Card, Button, Badge } from 'react-bootstrap'
 
+import CartContext from '@/context/CartContext'
+
 function SushiCard(props) {
   const { item } = props
+
+  const { increaseCartQuantity } = useContext(CartContext)
+
+  const AddToCart = () => {
+    increaseCartQuantity(item)
+  }
+
   const imageUrl = item.image
   return (
     <Card className="h-100">
@@ -15,7 +24,7 @@ function SushiCard(props) {
         <h3>
           <Badge bg="secondary">$ {item.price / 100}</Badge>
         </h3>
-        <Button>Add to cart</Button>
+        <Button onClick={AddToCart}>Add to cart</Button>
       </Card.Body>
     </Card>
   )
