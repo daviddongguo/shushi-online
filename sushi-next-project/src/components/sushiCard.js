@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Card, Button, Badge } from 'react-bootstrap'
+import { formatCurrency } from '../utilities/formatCurrency'
 
 import CartContext from '@/context/CartContext'
 
@@ -22,7 +23,7 @@ function SushiCard(props) {
         <Card.Text>{item.description}</Card.Text>
 
         <h3>
-          <Badge bg="secondary">$ {item.price / 100}</Badge>
+          <Badge bg="secondary"> {formatCurrency(item.price)}</Badge>
         </h3>
         <Button onClick={AddToCart}>Add to cart</Button>
       </Card.Body>
