@@ -8,11 +8,12 @@ import CartContext from '@/context/CartContext'
 
 export function CartItem(props) {
   const { sushi, quantity } = props
-  const { removeFromCart } = useContext(CartContext)
+  const { increaseCartQuantity, removeFromCart, decreaseCartQuantity } =
+    useContext(CartContext)
 
   return (
     <Stack direction="horizontal" gap={3}>
-      <Image src={sushi.image} alt="" thumbnail />
+      <Image src={sushi.image} alt="" width="100px" />
       <div className="me-auto">
         <div>
           {sushi.title}{' '}
@@ -30,7 +31,24 @@ export function CartItem(props) {
       <Button
         variant="outline-danger"
         size="sm"
-        onClick={() => removeFromCart(sushi.id)}
+        onClick={() => increaseCartQuantity(sushi)}
+      >
+        {' '}
+        +
+      </Button>
+      <div>{quantity}</div>
+      <Button
+        variant="outline-danger"
+        size="sm"
+        onClick={() => decreaseCartQuantity(sushi)}
+      >
+        {' '}
+        -
+      </Button>
+      <Button
+        variant="outline-danger"
+        size="sm"
+        onClick={() => removeFromCart(sushi)}
       >
         &times;
       </Button>

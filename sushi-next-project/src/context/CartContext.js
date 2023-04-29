@@ -15,24 +15,54 @@ export const CartProvider = ({ children }) => {
   const openCart = () => setIsCartOpen(true)
   const closeCart = () => setIsCartOpen(false)
 
-  function increaseCartQuantity(sushi, quantity = 1) {
-    const index = cartItems.findIndex((item) => item.sushi.id === sushi.id)
+  const increaseCartQuantity = (sushi, quantity = 1) => {
     let newCartItems = []
 
+    const index = cartItems.findIndex((item) => item?.sushi?.id === sushi.id)
     if (index === -1) {
       newCartItems = [...cartItems, { sushi, quantity }]
     } else {
-      const updatedItem = {
-        ...cartItems[index],
-        quantity: cartItems[index].quantity + quantity,
-      }
       newCartItems = [
         ...cartItems.slice(0, index),
-        updatedItem,
+        {
+          ...cartItems[index],
+          quantity: cartItems[index].quantity + quantity,
+        },
         ...cartItems.slice(index + 1),
       ]
     }
+
     setCartItems(newCartItems)
+  }
+
+  const decreaseCartQuantity = (sushi, quantity = 1) => {
+    let newCartItems = []
+
+    const index = cartItems.findIndex((item) => item?.sushi?.id === sushi.id)
+    if (index === -1) {
+      return
+    } else {
+      const newQuantity = cartItems[index].quantity - quantity
+      if (newQuantity <= 0) {
+        return removeFromCart(sushi)
+      }
+
+      newCartItems = [
+        ...cartItems.slice(0, index),
+        {
+          ...cartItems[index],
+          quantity: newQuantity,
+        },
+        ...cartItems.slice(index + 1),
+      ]
+    }
+
+    setCartItems(newCartItems)
+  }
+
+  const removeFromCart = (sushi) => {
+    const index = cartItems.findIndex((item) => item?.sushi?.id === sushi.id)
+    setCartItems([...cartItems.slice(0, index), ...cartItems.slice(index + 1)])
   }
 
   return (
@@ -44,6 +74,8 @@ export const CartProvider = ({ children }) => {
         openCart,
         closeCart,
         increaseCartQuantity,
+        removeFromCart,
+        decreaseCartQuantity,
       }}
     >
       {children}

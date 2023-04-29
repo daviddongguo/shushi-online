@@ -11,7 +11,12 @@ export function ShoppingCart(props) {
   const { closeCart, cartItems } = useContext(CartContext)
 
   return (
-    <Offcanvas show={isOpen} onHide={closeCart} placement="end">
+    <Offcanvas
+      show={isOpen}
+      onHide={closeCart}
+      placement="end"
+      backdrop="static"
+    >
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Cart</Offcanvas.Title>
       </Offcanvas.Header>
