@@ -16,18 +16,21 @@ export const CartProvider = ({ children }) => {
   const closeCart = () => setIsCartOpen(false)
 
   function increaseCartQuantity(sushi, quantity = 1) {
-    const index = cartItems.indexOf((i) => i.id === sushi.id)
+    const index = cartItems.findIndex((item) => item.sushi.id === sushi.id)
     let newCartItems = []
+
     if (index === -1) {
       newCartItems = [...cartItems, { sushi, quantity }]
     } else {
-      newCartItems = cartItems.map((item) => {
-        if (item.id === sushi.id) {
-          return { item, quantity: item.quantity + quantity }
-        } else {
-          return item
-        }
-      })
+      const updatedItem = {
+        ...cartItems[index],
+        quantity: cartItems[index].quantity + quantity,
+      }
+      newCartItems = [
+        ...cartItems.slice(0, index),
+        updatedItem,
+        ...cartItems.slice(index + 1),
+      ]
     }
     setCartItems(newCartItems)
   }
