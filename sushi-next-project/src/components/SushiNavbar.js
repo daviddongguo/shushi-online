@@ -1,10 +1,10 @@
 import React from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
-import CartButton from './CartButton'
+import CartButton from './cart/CartButton'
 
 const SushiNavbar = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="#home">Sushi Store</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -14,7 +14,7 @@ const SushiNavbar = () => {
             <Nav.Link href="#pricing">Admin</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <CartButton openCart="false" cartQuantity="5" />
+        <CartButton />
       </Container>
     </Navbar>
   )
