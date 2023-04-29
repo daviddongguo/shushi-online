@@ -18,7 +18,7 @@ export const CartProvider = ({ children }) => {
   const increaseCartQuantity = (sushi, quantity = 1) => {
     let newCartItems = []
 
-    const index = cartItems.findIndex((item) => item?.sushi?.id === sushi.id)
+    const index = findItemIndex(sushi)
     if (index === -1) {
       newCartItems = [...cartItems, { sushi, quantity }]
     } else {
@@ -38,7 +38,7 @@ export const CartProvider = ({ children }) => {
   const decreaseCartQuantity = (sushi, quantity = 1) => {
     let newCartItems = []
 
-    const index = cartItems.findIndex((item) => item?.sushi?.id === sushi.id)
+    const index = findItemIndex(sushi)
     if (index === -1) {
       return
     } else {
@@ -61,8 +61,17 @@ export const CartProvider = ({ children }) => {
   }
 
   const removeFromCart = (sushi) => {
-    const index = cartItems.findIndex((item) => item?.sushi?.id === sushi.id)
+    const index = findItemIndex(sushi)
     setCartItems([...cartItems.slice(0, index), ...cartItems.slice(index + 1)])
+  }
+
+  const getItemQuantity = (sushi) => {
+    const index = findItemIndex(sushi)
+    return cartItems[index]?.quantity || 0
+  }
+
+  const findItemIndex = (sushi) => {
+    return cartItems.findIndex((item) => item?.sushi?.id === sushi.id)
   }
 
   return (
@@ -73,6 +82,7 @@ export const CartProvider = ({ children }) => {
         isOpenCart: isCartOpen,
         openCart,
         closeCart,
+        getItemQuantity,
         increaseCartQuantity,
         removeFromCart,
         decreaseCartQuantity,

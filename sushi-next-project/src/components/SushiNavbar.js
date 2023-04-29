@@ -4,7 +4,7 @@ import CartButton from './cart/CartButton'
 
 const SushiNavbar = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="#home">Sushi Store</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
