@@ -4,11 +4,10 @@ import { Button } from 'react-bootstrap'
 import CartContext from '@/context/CartContext'
 
 export default function CartButton() {
-  const { cartItems, cartQuantity } = useContext(CartContext)
+  const { cartQuantity } = useContext(CartContext)
 
   const openCart = () => {
     console.log('open shopping cart')
-    console.log(cartItems)
   }
 
   return (
