@@ -1,8 +1,16 @@
-import React, { Button } from 'react-bootstrap'
+import React, { useContext } from 'react'
+import { Button } from 'react-bootstrap'
 
-export default function CartButton(props) {
-  // eslint-disable-next-line react/prop-types
-  const { openCart, cartQuantity } = props
+import CartContext from '@/context/CartContext'
+
+export default function CartButton() {
+  const { cartItems, cartQuantity } = useContext(CartContext)
+
+  const openCart = () => {
+    console.log('open shopping cart')
+    console.log(cartItems)
+  }
+
   return (
     <Button
       onClick={openCart}
