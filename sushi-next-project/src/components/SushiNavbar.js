@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
-import CartButton from './CartButton'
+import CartButton from './cart/CartButton'
 
 const SushiNavbar = () => {
   return (
@@ -14,7 +14,7 @@ const SushiNavbar = () => {
             <Nav.Link href="#pricing">Admin</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <CartButton openCart="false" cartQuantity="5" />
+        <CartButton />
       </Container>
     </Navbar>
   )
