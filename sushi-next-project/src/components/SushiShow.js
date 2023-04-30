@@ -14,9 +14,11 @@ function SushiShow() {
       const fetchData = async () => {
         const response = await fetch(serverUrl)
         const data = await response.json()
-        const convertedList = covertSushiList(data)
+        // const convertedList = covertSushiList(data)
+        const convertedList = data
         setListToShow(convertedList)
         setOriginalList(convertedList)
+        console.log()
       }
       fetchData()
     } else {
