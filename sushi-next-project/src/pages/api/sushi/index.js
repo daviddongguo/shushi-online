@@ -22,7 +22,9 @@ export default async function handler(req, res) {
       break
     }
     case 'POST': {
-      res.status(201).json({ message: 'ok' })
+      const { title, image, description, price } = req.body
+      const itemDB = await Sushi.create({ title, image, description, price })
+      res.status(201).json(itemDB)
       break
     }
     default:
