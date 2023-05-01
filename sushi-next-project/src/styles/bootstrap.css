@@ -7170,7 +7170,7 @@ fieldset:disabled .btn {
 
 .text-bg-sushi-dark {
   color: #000 !important;
-  background-color: RGBA(192, 192, 192, var(--bs-bg-opacity, 1)) !important;
+  background-color: RGBA(14, 11, 08, var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-danger {

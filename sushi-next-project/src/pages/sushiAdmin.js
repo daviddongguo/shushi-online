@@ -81,7 +81,7 @@ export default function SushiAdmin() {
   }
 
   return (
-    <>
+    <div className="text-bg-sushi-gray pt-3 pb-5">
       <Head>
         <title>Sushi | Admin</title>
         <meta name="description" content="an online sushi store" />
@@ -89,6 +89,7 @@ export default function SushiAdmin() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminNavbar />
+
       <Container>
         <Row xs={1} md={2} lg={3} className="g-3 mt-5">
           <Col>
@@ -148,6 +149,6 @@ export default function SushiAdmin() {
           </Button>
         </Row>
       </Container>
-    </>
+    </div>
   )
 }

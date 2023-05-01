@@ -25,7 +25,7 @@ const SushiSearch = ({ sort, search }) => {
       <Row className="mt-4 mb-3">
         <Col className="mb-2">
           <Button
-            variant="warning"
+            className="text-bg-sushi-orange"
             onClick={sortByPrice}
             style={{ width: '16rem' }}
           >
@@ -34,7 +34,7 @@ const SushiSearch = ({ sort, search }) => {
         </Col>
         <Col className="mb-2">
           <Button
-            variant="warning"
+            className="text-bg-sushi-orange"
             onClick={displayAll}
             style={{ width: '16rem' }}
           >
@@ -50,7 +50,7 @@ const SushiSearch = ({ sort, search }) => {
               onChange={queryChanged}
             />
             <Button
-              variant="warning"
+              className="text-bg-sushi-orange"
               onClick={searchByTitle}
               style={{ width: '12rem' }}
             >
