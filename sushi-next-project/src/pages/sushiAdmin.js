@@ -48,8 +48,7 @@ export default function SushiAdmin() {
           'Access-Control-Allow-Origin': '*',
         },
         data: formData,
-        // url: 'https://dongguo.xyz/api/images',
-        url: 'http://localhost:8080/images',
+        url: 'https://dongguo.xyz/api/images/add',
       }
       const response = await axios(options)
       console.log(response)
