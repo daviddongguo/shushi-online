@@ -1,4 +1,4 @@
-import connectMongoDB, { connection } from '@/utilities/dbConnect'
+import connectUserDB, { userDbConnection } from '@/utilities/userDBConnect'
 import User from '@/models/User'
 import { findUserById, isValidId } from '../users'
 
@@ -11,13 +11,13 @@ export default async function handler(req, res) {
 
   let userDB
   try {
-    if (!connection.isConnected) {
-      await connectMongoDB()
+    if (!userDbConnection.isConnected) {
+      await connectUserDB()
     }
 
     userDB = await findUserById(id)
     if (!userDB) {
-      res.status(400).json({ error: `user(id = ${id} nof found)` })
+      res.status(400).json({ error: `user(id = ${id} not found)` })
       return
     }
   } catch (error) {
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
           if (updatedUser) {
             res.status(200).json(updatedUser)
           } else {
-            res.status(404).json({ error: 'User not found' })
+            res.status(500).json({ error: 'Server Error' })
           }
         } catch (error) {
           res.status(500).json({ error })

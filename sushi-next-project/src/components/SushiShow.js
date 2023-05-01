@@ -14,9 +14,11 @@ function SushiShow() {
       const fetchData = async () => {
         const response = await fetch(serverUrl)
         const data = await response.json()
-        const convertedList = covertSushiList(data)
+        // const convertedList = covertSushiList(data)
+        const convertedList = data
         setListToShow(convertedList)
         setOriginalList(convertedList)
+        console.log()
       }
       fetchData()
     } else {
@@ -44,22 +46,6 @@ function SushiShow() {
     },
     [originalList]
   )
-
-  const covertSushiList = (data) => {
-    const array = []
-    for (const item of data) {
-      array.push({
-        id: item.catalogSectionUUID,
-        title: item['payload.standardItemsPayload.catalogItems[0].title'],
-        image: item['payload.standardItemsPayload.catalogItems[0].imageUrl'],
-        subtitle: item['payload.standardItemsPayload.catalogItems[0].title'],
-        description:
-          item['payload.standardItemsPayload.catalogItems[0].itemDescription'],
-        price: item['payload.standardItemsPayload.catalogItems[0].price'],
-      })
-    }
-    return array
-  }
 
   return (
     <>

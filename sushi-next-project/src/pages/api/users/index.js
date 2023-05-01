@@ -1,10 +1,12 @@
-import connectMongoDB from '@/utilities/dbConnect'
+import connectUserDB, { userDbConnection } from '@/utilities/userDBConnect'
 import User from '@/models/User'
 import mongoose from 'mongoose'
 
 export default async function handler(req, res) {
   try {
-    await connectMongoDB()
+    if (!userDbConnection.isConnected) {
+      await connectUserDB()
+    }
 
     switch (req.method) {
       case 'POST': {
@@ -44,7 +46,6 @@ export async function findUserById(id) {
   }
 
   try {
-    await connectMongoDB()
     const user = await User.findOne({ _id: id }).exec()
     return user
   } catch (error) {
@@ -55,7 +56,6 @@ export async function findUserById(id) {
 
 export async function findUserByEmail(email) {
   try {
-    await connectMongoDB()
     const user = await User.findOne({ email }).exec()
     return user
   } catch (error) {

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 
 import { Button, Stack, Image } from 'react-bootstrap'
-import { formatCurrency } from '../../utilities/formatCurrency'
 import PropTypes from 'prop-types'
 
 import CartContext from '@/context/CartContext'

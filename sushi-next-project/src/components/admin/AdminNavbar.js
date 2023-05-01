@@ -1,8 +1,7 @@
 import React from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
-import CartButton from './cart/CartButton'
 
-const SushiNavbar = () => {
+const AdminNavbar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>
@@ -14,9 +13,8 @@ const SushiNavbar = () => {
             <Nav.Link href="sushiAdmin">Admin</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <CartButton />
       </Container>
     </Navbar>
   )
 }
-export default SushiNavbar
+export default AdminNavbar
