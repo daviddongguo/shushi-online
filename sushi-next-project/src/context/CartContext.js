@@ -20,8 +20,10 @@ export const CartProvider = ({ children }) => {
 
     const index = findItemIndex(sushi)
     if (index === -1) {
+      // add new sushi
       newCartItems = [...cartItems, { sushi, quantity }]
     } else {
+      // update
       newCartItems = [
         ...cartItems.slice(0, index),
         {
