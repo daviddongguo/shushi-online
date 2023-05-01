@@ -3,7 +3,13 @@ import { Navbar, Container, Nav } from 'react-bootstrap'
 
 const AdminNavbar = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      className="text-bg-sushi-dark"
+      variant="dark"
+      sticky="top"
+    >
       <Container>
         <Navbar.Brand href="#home">Sushi Store</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

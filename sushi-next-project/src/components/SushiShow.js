@@ -48,10 +48,10 @@ function SushiShow() {
   )
 
   return (
-    <>
+    <div className="text-bg-sushi-gray pt-3 pb-5">
       <SearchBar sort={sortByPrice} search={searchByTitle} />
       <SushiList list={listToShow} />
-    </>
+    </div>
   )
 }
 

@@ -45,7 +45,7 @@ function SushiCard(props) {
         <div className="mt-auto">
           {quantity === 0 ? (
             <Button
-              className="w-100"
+              className="w-100 text-bg-sushi-orange"
               onClick={() => increaseCartQuantity(item)}
             >
               + Add To Cart
@@ -59,11 +59,21 @@ function SushiCard(props) {
                 className="d-flex align-items-center justify-content-center"
                 style={{ gap: '.5rem' }}
               >
-                <Button onClick={() => decreaseCartQuantity(item)}>-</Button>
+                <Button
+                  className="text-bg-sushi-orange"
+                  onClick={() => decreaseCartQuantity(item)}
+                >
+                  -
+                </Button>
                 <div>
                   <span className="fs-3">{quantity}</span> in cart
                 </div>
-                <Button onClick={() => increaseCartQuantity(item)}>+</Button>
+                <Button
+                  className="text-bg-sushi-orange"
+                  onClick={() => increaseCartQuantity(item)}
+                >
+                  +
+                </Button>
               </div>
               <Button
                 onClick={() => removeFromCart(item)}
