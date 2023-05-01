@@ -1,9 +1,11 @@
-import connectMongoDB from '@/utilities/dbConnect'
+import connectUserDB, { userDbConnection } from '@/utilities/userDBConnect'
 import { findUserByEmail } from '../users'
 
 export default async function handler(req, res) {
   try {
-    await connectMongoDB()
+    if (!userDbConnection.isConnected) {
+      await connectUserDB()
+    }
     switch (req.method) {
       case 'POST': {
         const { email, password } = req.body
