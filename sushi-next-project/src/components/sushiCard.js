@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Card, Button, Badge } from 'react-bootstrap'
 import { formatCurrency } from '../utilities/formatCurrency'
@@ -7,6 +7,15 @@ import CartContext from '@/context/CartContext'
 
 function SushiCard(props) {
   const { item } = props
+  const [text, setText] = useState(item.description.slice(0, 120))
+  const [show, setShow] = useState(
+    text.length < item.description.length ? 'show more' : ''
+  )
+
+  const showMore = () => {
+    setText(item.description)
+    setShow('')
+  }
 
   const {
     getItemQuantity,
@@ -21,9 +30,15 @@ function SushiCard(props) {
     <Card className="h-100">
       <Card.Img variant="top" src={imageUrl} width="300px" height="280" />
       <Card.Body>
-        <Card.Title>{item.title}</Card.Title>
-        <Card.Text>{item.description}</Card.Text>
-
+        <div>
+          <Card.Title>{item.title || ''}</Card.Title>
+          <Card.Text>
+            {text}{' '}
+            <a href="#" onClick={showMore}>
+              {show}
+            </a>
+          </Card.Text>
+        </div>
         <h3>
           <Badge bg="secondary"> {formatCurrency(item.price)}</Badge>
         </h3>
