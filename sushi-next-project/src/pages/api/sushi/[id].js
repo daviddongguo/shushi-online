@@ -5,7 +5,8 @@ import { isValidId } from '../users'
 export default async function handler(req, res) {
   const { id } = req.query
   if (!isValidId(id)) {
-    res.status(400).json({ error: `id(${id}) is not valid` })
+    // the resource of this URL is invalid
+    res.status(404).json({ error: `id(${id}) is not valid` })
     return
   }
 
@@ -17,7 +18,8 @@ export default async function handler(req, res) {
 
     sushiDB = await findSushiById(id)
     if (!sushiDB) {
-      res.status(400).json({ error: `sushi(id = ${id} nof found)` })
+      // the resource of this URL is invalid
+      res.status(404).json({ error: `sushi(id = ${id} nof found)` })
       return
     }
   } catch (error) {
@@ -33,7 +35,8 @@ export default async function handler(req, res) {
       }
       case 'DELETE': {
         await deleteSushiById(id)
-        res.status(200).json({ message: 'successfully' })
+        // the URL is valid and Server has successfully did the execution but it has no data to return
+        res.status(204).send()
         break
       }
       case 'PUT': {
