@@ -8,7 +8,12 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case 'GET': {
-      const arrayMongo = await Sushi.find()
+      const { title = '', number = 12 } = req.query
+      const arrayMongo = await Sushi.find({
+        title: { $regex: title, $options: 'i' },
+      })
+        .limit(number)
+        .sort('price')
       const array = arrayMongo.map((item) => {
         return {
           id: item._id,
