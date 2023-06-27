@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
+import Link from 'next/link'
 
 const AdminNavbar = () => {
   return (
@@ -15,8 +16,8 @@ const AdminNavbar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="sushiAdmin">Admin</Nav.Link>
+            <Link href="/">Home</Link>
+            <Link href="sushiAdmin">Admin</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
