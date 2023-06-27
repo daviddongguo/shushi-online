@@ -82,3 +82,29 @@ export async function findSushiById(id) {
     return null
   }
 }
+export async function deleteSushiById(id) {
+  try {
+    await UserRecipe.deleteOne({ _id: id })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function updateSushi(id, sushiToUpdate) {
+  try {
+    const updatedSushi = await UserRecipe.findByIdAndUpdate(
+      id,
+      {
+        title: sushiToUpdate.title,
+        image: sushiToUpdate.image,
+        description: sushiToUpdate.description,
+        price: sushiToUpdate.price,
+      },
+      { new: true }
+    )
+    return updatedSushi
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+}
