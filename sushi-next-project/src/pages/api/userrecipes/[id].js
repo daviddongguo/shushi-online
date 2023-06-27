@@ -1,6 +1,6 @@
 import connectSushiDB, { sushiDbConnection } from '@/utilities/sushiDBConnect'
 import UserRecipe from '@/models/UserRecipe'
-import { isValidId } from '../users'
+import { isValidId } from '../users/signup'
 
 export default async function handler(req, res) {
   const { id } = req.query

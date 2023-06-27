@@ -1,5 +1,5 @@
 import connectUserDB, { userDbConnection } from '@/utilities/userDBConnect'
-import { findUserByEmail } from '../users/signup'
+import { findUserByEmail } from './signup'
 
 export default async function handler(req, res) {
   try {

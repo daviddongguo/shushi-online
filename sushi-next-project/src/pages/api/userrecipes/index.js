@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     case 'POST': {
       const { userId } = req.body
       const itemDB = await UserRecipe.find({ userId })
-      res.status(201).json(itemDB)
+      res.status(200).json(itemDB)
       break
     }
     default:

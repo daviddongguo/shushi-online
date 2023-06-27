@@ -1,6 +1,6 @@
 import connectUserDB, { userDbConnection } from '@/utilities/userDBConnect'
 import User from '@/models/User'
-import { findUserById, isValidId } from '../users'
+import { findUserById, isValidId } from './signup'
 
 export default async function handler(req, res) {
   const { id } = req.query
